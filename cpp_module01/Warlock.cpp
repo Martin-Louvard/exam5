@@ -19,6 +19,7 @@ Warlock& Warlock::operator=(const Warlock& W)
 {
     this->name = W.name;
     this->title = W.title;
+    this->spells = W.spells;
     return *this;
 }
 
@@ -40,4 +41,35 @@ void Warlock::setTitle(const std::string& title)
 void Warlock::introduce(void) const
 {
     std::cout << name <<": I am "<< name << ", " << title << "!" << std::endl;
+}
+
+void Warlock::learnSpell(ASpell* spell)
+{
+    spells.push_back(spell);
+}
+
+void Warlock::forgetSpell(std::string spell_name)
+{
+    
+    for (std::vector<ASpell*>::iterator it = spells.begin(); it != spells.end(); it++)
+    {
+        if((*it)->getName() == spell_name)
+        {
+            spells.erase(it);
+            return ;
+        }
+    }
+}
+
+void Warlock::launchSpell(std::string spell_name, ATarget const& target)
+{
+    
+    for (std::vector<ASpell*>::iterator it = spells.begin(); it != spells.end(); it++)
+    {
+        if((*it)->getName() == spell_name)
+        {
+            (*it)->launch(target);
+            return;
+        }
+    }
 }

@@ -4,10 +4,12 @@
 #include <string>
 #include "ATarget.hpp"
 
+class ATarget;
+
 class ASpell{
     public:
     ASpell(const std::string& name, const std::string& effects);
-    ~ASpell(void);
+    virtual ~ASpell(void);
     ASpell(const ASpell & AS);
     ASpell&operator=(const ASpell & AS);
 
@@ -16,7 +18,7 @@ class ASpell{
 
     virtual ASpell* clone() = 0;
 
-    void launch(const ATarget& AT);
+    void launch(const ATarget& AT) const;
 
     protected:
         std::string name;

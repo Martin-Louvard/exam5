@@ -13,7 +13,7 @@ ATarget::ATarget(const ATarget & AT)
 
 ATarget& ATarget::operator=(const ATarget & AT)
 {
-    this->type = type;
+    this->type = AT.type;
     return *this;
 }
 
@@ -22,7 +22,7 @@ const std::string& ATarget::getType(void) const
     return this->type;
 }
 
-void ATarget::getHitBySpell(const ASpell& AS)
+void ATarget::getHitBySpell(const ASpell& AS) const
 {
     std::cout << type << " has been " << AS.getEffects() << "!" << std::endl;
 }

@@ -13,8 +13,8 @@ ASpell::ASpell(const ASpell& AS)
 
 ASpell& ASpell::operator=(const ASpell& AS)
 {
-    this->name = name;
-    this->effects = effects;
+    this->name = AS.name;
+    this->effects = AS.effects;
 
     return *this;
 }
@@ -29,7 +29,7 @@ std::string ASpell::getEffects(void) const
     return this->effects;
 }
 
-void ASpell::launch(const ATarget& AT)
+void ASpell::launch(const ATarget& AT) const
 {
     AT.getHitBySpell(*this);
 }
